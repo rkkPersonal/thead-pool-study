@@ -24,16 +24,20 @@ public class CollectionTask extends Task implements CancelPipeline, CompletedPip
         int i = new Random().nextInt(10000);
         try {
             Thread.sleep(i);
-        } catch (InterruptedException exception) {
-            /*System.out.println("被取消任务----" + jobId);*/
-        }
+
         build.setContent("我正在打篮球。。。。。。");
+        if (!Thread.currentThread().isInterrupted()) {
+            build.setRemark("我被中断了...，【【【不进行job更新操作..】】】");
+        }
+        } catch (InterruptedException exception) {
+            System.err.println("被取消任务----" + jobId);
+        }
         return build;
     }
 
     @Override
     public void cancel(int jobId, long startTime, long costTime) {
-        System.out.println("JobId:" + jobId + ", 任务开始时间:" + startTime + ", 任务已经取消，消耗时间：" + costTime);
+        System.out.println("JobId:" + jobId + ", 任务开始时间:" + startTime + ", 任务已经取消，消耗时间：" + costTime + ",进行任务更新 TimeOut ");
     }
 
     @Override

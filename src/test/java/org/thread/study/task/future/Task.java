@@ -23,7 +23,7 @@ public class Task implements Callable<Result> {
     }
 
     @Override
-    public Result call()  {
+    public Result call()throws Exception {
         Result<String> build = Result.<String>builder().startTime(startTime).build();
         System.out.println("开始执行----"+jobId);
         int i = new Random().nextInt(10000);

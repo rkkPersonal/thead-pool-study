@@ -17,6 +17,8 @@ public class Result<T> {
 
     private long startTime;
 
+    private String remark;
+
     private T content;
 
 
