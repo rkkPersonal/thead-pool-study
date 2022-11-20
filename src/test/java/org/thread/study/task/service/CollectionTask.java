@@ -19,6 +19,7 @@ public class CollectionTask extends Task implements CancelPipeline, CompletedPip
 
     @Override
     public Result call() {
+
         int jobId = getJobId();
         Result<String> build = Result.<String>builder().startTime(getStartTime()).build();
         int i = new Random().nextInt(10000);
